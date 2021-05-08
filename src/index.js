@@ -7,6 +7,7 @@ const session = require('express-session');
 
 // INICIALIZATION
 const app = express();
+require('./database');
 
 
 //SETTINGS todo lo relacionado con el framework y las vistas html, handlebars
@@ -39,7 +40,7 @@ app.use(require('./routes/notes'));
 app.use(require('./routes/users'));
 
 //STATIC FILES
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 //SERVER INITIALIZE
 app.listen(app.get('port'), ()=>{
